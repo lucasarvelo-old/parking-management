@@ -13,6 +13,8 @@ const Ticket = require('./models/tickets');
 const Parking = require('./models/parkings');
 const models = { Ticket, Parking };
 
+const rates = require('./utils/ratesLoader')();
+
 const app = express();
 
 // view engine setup
@@ -25,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/tickets', tickets(models));
+app.use('/tickets', tickets({ models: models, rates: rates }));
 app.use('/', index());
 
 // catch 404 and forward to error handler
