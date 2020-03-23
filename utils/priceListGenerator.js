@@ -2,13 +2,12 @@ const priceListGenerator = ({
   increaseRate,
   basePrice,
   listLength,
-  priceList,
+  priceList = [basePrice.toFixed(2)],
 }) => {
-  priceList = priceList || [basePrice];
   const percentage = parseFloat(increaseRate / 100);
 
   if (listLength >= 2) {
-    priceList.push(basePrice * percentage + basePrice);
+    priceList.push((basePrice * percentage + basePrice).toFixed(2));
 
     priceListGenerator({
       increaseRate: increaseRate,
