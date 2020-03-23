@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 //import controllers
+const payments = require('./controllers/payments');
 const tickets = require('./controllers/tickets');
 const index = require('./controllers/index');
 
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/payments', payments({ models: models, rates: rates }));
 app.use('/tickets', tickets({ models: models, rates: rates }));
 app.use('/', index());
 
