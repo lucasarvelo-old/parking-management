@@ -10,6 +10,10 @@ const schema = new Schema({
   checkOut: {
     type: Date,
   },
+  fee: {
+    type: Number,
+    default: 0,
+  },
   paid: {
     type: Boolean,
     default: false,
