@@ -1,6 +1,13 @@
 module.exports = ({ checkInDate, checkOutDate }) => {
-  const duration = checkOutDate.getTime() - checkInDate.getTime();
-  const hours = Math.floor(duration / (1000 * 60 * 60)) % 24;
+  try {
+    const duration = checkOutDate.getTime() - checkInDate.getTime();
 
-  return hours;
+    if (duration < 0) return null; //validate checkOutDate is after checkInDate
+
+    const hours = Math.floor(duration / (1000 * 60 * 60));
+
+    return hours;
+  } catch (error) {
+    return console.log(error);
+  }
 };
