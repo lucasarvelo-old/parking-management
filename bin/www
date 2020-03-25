@@ -8,8 +8,7 @@ require('dotenv').config();
 const app = require('../app');
 const debug = require('debug')('parking-management:server');
 const http = require('http');
-const mongoose = require('mongoose');
-const dbUrl = require('../db').url;
+const dbInit = require('../db');
 
 /**
  * Get port from environment and store in Express.
@@ -25,23 +24,18 @@ app.set('port', port);
 const server = http.createServer(app);
 
 /**
- * Connect Database and Listen on provided port, on all network interfaces.
+ * Initialize database connection
  */
-mongoose.connect(dbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
 
-const db = mongoose.connection;
+const db = dbInit();
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', (err, db) => {
-  server.listen(port);
-  server.on('error', onError);
-  server.on('listening', onListening);
-});
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
