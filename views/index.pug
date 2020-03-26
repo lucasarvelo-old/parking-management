@@ -1,5 +1,63 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.container-fluid.text-center
+    div.row.p-2
+      div.col.p-2.m-auto
+        -h1 = "Welcome to " + title.split(',')[0] + ' Parking'
+        h1.m-auto= h1
+    div.row.p-2
+      div.col.p-2.m-auto
+        div.card-deck
+          div.card.shadow
+            div.card-header
+              h4 New Ticket
+            div.card-body.d-flex.align-items-center.justify-content-center
+                button.btn.btn-success.btn-lg.m-auto.text-nowrap(onClick='generateTicket()') Press for Ticket
+          div.card.shadow.d-flex
+            div.card-header
+              h4 Ticket Status
+            div.card-body.d-flex.align-items-center.justify-content-center
+              form(onsubmit="getFee(); return false" method="GET")
+                div.form-group
+                  label(for="ticketNumber") Ticket #
+                  input.form-control.mx-auto(
+                    type="number"
+                    id="ticketNumberFee"
+                    name="ticketNumber"
+                  )
+                  input.m-2.btn.btn-info.btn-lg(type="submit" value="Get Fee")
+          div.card.shadow
+            div.card-header
+              h4 Ticket Payment
+            div.card-body.d-flex.align-items-center.justify-content-center
+              form(onsubmit="processPayment(); return false" method="POST")
+                div.form-group
+                  label(for="ticketNumberPay") Ticket #
+                  input.form-control.mx-auto(
+                    type="number"
+                    id="ticketNumberPay"
+                    name="ticketNumber"
+                )
+                  label(for="creditCardnumber") Credit Card #
+                  input.form-control.mx-auto(
+                    type="text"
+                    id="creditCardNumber"
+                    name="creditCardNumber"
+                  )
+                  input.m-2.btn.btn-primary.btn-lg(type="submit" value="Pay")
+    did.row.p-2
+      div.col.p-2.m-auto
+        div.card.mx-auto.shadow.screen
+          div.card-body.m-auto
+            h2#screen
+          div.card-footer
+            small.text-muted
+              |Credit Card Number Sample
+              br
+              |5117047592118921
+
+
+
+
+
