@@ -7,8 +7,8 @@ const mongoUrl = process.env.DB_URL + ':' + process.env.DB_PORT;
 // Database Name
 const dbName =
   process.env.NODE_ENV === 'test'
-    ? 'parking-management-test'
-    : 'parking-management';
+    ? process.env.DB_NAME_TEST
+    : process.env.DB_NAME;
 
 // Database URL
 const url = mongoUrl + '/' + dbName;
