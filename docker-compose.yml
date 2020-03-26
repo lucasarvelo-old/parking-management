@@ -1,0 +1,19 @@
+version: '2'
+services:
+  app:
+    container_name: parking-management
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - DEBUG=parking-management:*
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
