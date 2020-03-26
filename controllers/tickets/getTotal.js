@@ -9,13 +9,16 @@ const getTotal = ({ Ticket, rates }) => async (req, res, next) => {
         if (!ticket) {
           res.json('Ticket not found!');
         } else {
-          const totalInvoice = paymentCalculator({
-            checkInDate: ticket.checkIn,
-            checkOutDate: new Date(),
-            rates: rates,
-          });
-
-          res.json(totalInvoice);
+          if (ticket.paid) {
+            res.json('Ticket already paid!');
+          } else {
+            const totalInvoice = paymentCalculator({
+              checkInDate: ticket.checkIn,
+              checkOutDate: new Date(),
+              rates: rates,
+            });
+            res.json(totalInvoice);
+          }
         }
       }
     );
