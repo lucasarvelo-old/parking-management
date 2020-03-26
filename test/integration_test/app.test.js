@@ -33,7 +33,7 @@ describe('POST /tickets', () => {
       .post('/tickets')
       .send();
 
-    expect(res.text).toBe('1');
+    expect(JSON.parse(res.text)).toBe('1');
     expect(res.statusCode).toBe(200);
   });
 
@@ -42,7 +42,7 @@ describe('POST /tickets', () => {
       .post('/tickets')
       .send();
 
-    expect(res.text).toBe('2');
+    expect(JSON.parse(res.text)).toBe('2');
     expect(res.statusCode).toBe(200);
   });
 
@@ -51,7 +51,7 @@ describe('POST /tickets', () => {
       .post('/tickets')
       .send();
 
-    expect(res.text).toBe('Parking Full');
+    expect(JSON.parse(res.text)).toBe('Parking Full');
     expect(res.statusCode).toBe(200);
   });
 });
@@ -60,14 +60,14 @@ describe('GET /tickets/:ticketNumber', () => {
   test('Should responds with 3.00', async () => {
     const res = await request(app).get('/tickets/1');
 
-    expect(res.text).toBe('3.00');
+    expect(JSON.parse(res.text)).toBe('3.00');
     expect(res.statusCode).toBe(200);
   });
 
   test('Should responds with Ticket Not Found!', async () => {
     const res = await request(app).get('/tickets/3');
 
-    expect(res.text).toBe('Ticket not found!');
+    expect(JSON.parse(res.text)).toBe('Ticket not found!');
     expect(res.statusCode).toBe(200);
   });
 });
@@ -81,7 +81,7 @@ describe('POST /payments/:ticketNumber', () => {
           creditCardNumber: 342282486634422,
         });
 
-      expect(res.text).toBe('Ticket not found!');
+      expect(JSON.parse(res.text)).toBe('Ticket not found!');
       expect(res.statusCode).toBe(200);
     });
 
@@ -92,7 +92,7 @@ describe('POST /payments/:ticketNumber', () => {
           creditCardNumber: 342282486634422564654,
         });
 
-      expect(res.text).toBe('Invalid Credit Card Number');
+      expect(JSON.parse(res.text)).toBe('Invalid Credit Card Number');
       expect(res.statusCode).toBe(200);
     });
 
@@ -103,7 +103,9 @@ describe('POST /payments/:ticketNumber', () => {
           creditCardNumber: 342282486634422,
         });
 
-      expect(res.text).toBe('Ticket has been pay. Thank you for you bussines!');
+      expect(JSON.parse(res.text)).toBe(
+        'Ticket has been pay. Thank you for you bussines!'
+      );
       expect(res.statusCode).toBe(200);
     });
   });
@@ -116,7 +118,7 @@ describe('POST /payments/:ticketNumber', () => {
           creditCardNumber: 342282486634422,
         });
 
-      expect(res.text).toBe('Ticket already paid!');
+      expect(JSON.parse(res.text)).toBe('Ticket already paid!');
       expect(res.statusCode).toBe(200);
     });
 
@@ -127,7 +129,9 @@ describe('POST /payments/:ticketNumber', () => {
           creditCardNumber: 342282486634422,
         });
 
-      expect(res.text).toBe('Ticket has been pay. Thank you for you bussines!');
+      expect(JSON.parse(res.text)).toBe(
+        'Ticket has been pay. Thank you for you bussines!'
+      );
       expect(res.statusCode).toBe(200);
     });
   });
