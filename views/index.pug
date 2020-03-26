@@ -25,6 +25,7 @@ block content
                     type="number"
                     id="ticketNumberFee"
                     name="ticketNumber"
+                    required
                   )
                   input.m-2.btn.btn-info.btn-lg(type="submit" value="Get Fee")
           div.card.shadow
@@ -38,12 +39,14 @@ block content
                     type="number"
                     id="ticketNumberPay"
                     name="ticketNumber"
+                    required
                 )
                   label(for="creditCardnumber") Credit Card #
                   input.form-control.mx-auto(
                     type="text"
                     id="creditCardNumber"
                     name="creditCardNumber"
+                    required
                   )
                   input.m-2.btn.btn-primary.btn-lg(type="submit" value="Pay")
     did.row.p-2
