@@ -13,11 +13,11 @@ const create = ({ Parking, Ticket }) => async (req, res, next) => {
           newTicket.save(error => {
             parking.updateOne({ $inc: { parkingSpotsInUse: 1 } }, error => {
               if (error) return next(error);
-              res.send(newTicket.ticketNumber.toString());
+              res.json(newTicket.ticketNumber.toString());
             });
           });
         } else {
-          res.send('Parking Full');
+          res.json('Parking Full');
         }
       }
     );

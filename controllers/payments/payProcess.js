@@ -13,9 +13,9 @@ const payProcess = ({ Ticket, Parking, rates }) => async (req, res, next) => {
         if (error) return next(error);
 
         if (!ticket) {
-          res.send('Ticket not found!');
+          res.json('Ticket not found!');
         } else if (ticket.paid) {
-          res.send('Ticket already paid!');
+          res.json('Ticket already paid!');
         } else {
           const totalInvoice = paymentCalculator({
             checkInDate: ticket.checkIn,
@@ -24,7 +24,7 @@ const payProcess = ({ Ticket, Parking, rates }) => async (req, res, next) => {
           });
 
           if (!creditCardValidation.isPotentiallyValid) {
-            res.send('Invalid Credit Card Number');
+            res.json('Invalid Credit Card Number');
           } else {
             ticket.updateOne({ paid: true, fee: totalInvoice }, error => {
               if (error) return next(error);
@@ -35,7 +35,7 @@ const payProcess = ({ Ticket, Parking, rates }) => async (req, res, next) => {
                 (error, parking) => {
                   if (error) return next(error);
 
-                  res.send('Ticket has been pay. Thank you for you bussines!');
+                  res.json('Ticket has been pay. Thank you for you bussines!');
                 }
               );
             });
