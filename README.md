@@ -1,6 +1,7 @@
 # Parking Management
 
 ### API to manage access to a parking lot with a simple front-end
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Table of Contents
@@ -62,14 +63,16 @@ $ npm test
 ```
 
 ### Docker
+
 - Install Docker [Download Docker](https://www.docker.com/products/docker-desktop)
-<br>
+  <br>
 
 - Build the Docker image
 
 ```shell
 $ docker-compose build
 ```
+
 <br>
 
 - Run Docker container
@@ -170,11 +173,12 @@ Reach out to me at one of the following places!
 - Website at <a href="http://lucasarvelo.com" target="_blank">`lucasarvelo.com`</a>
 - Twitter at <a href="http://twitter.com/lucasarvelo" target="_blank">`@lucasarvelo`</a>
 - email at <a href="mailto:lucasarvelo@gmail.com">lucasarvelo@gmail.com</a>
+
 ---
 
 ## License
 
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 - **[Apache 2.0 license](https://opensource.org/licenses/Apache-2.0)**
 - Copyright 2020 © <a href="https://lucasarvelo.com" target="_blank">Lucas Arvelo</a>.
