@@ -1,30 +1,27 @@
-process.env.NODE_ENV = 'test'; //setup database to test
+process.env.NODE_ENV = 'test';
 process.env.DEFAULT_PARKING_LOCATION = '130 King Street, London, ON N6A 1C5';
 process.env.TOTAL_PARKING_SPOTS = '2';
 process.env.STARTING_RATE = '3';
 process.env.RATE_INCREASE = '50';
 process.env.RATES_DURATION = '1,3,6,24';
 process.env.RATES_NAME = '1hr,3hr,6hr,ALL DAY';
-process.env.DB_URL = 'mongodb://localhost';
-process.env.DB_PORT = '27017';
 
+const mongoose = require('mongoose');
 const request = require('supertest');
 
-const dbInit = require('../../db');
 const app = require('../../app');
-let db;
+let connection;
 
 beforeAll(async () => {
-  db = await dbInit();
+  mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  connection = await mongoose.connection;
 });
 
-function cleanUpDb(db) {
-  db.db.dropDatabase();
-  db.close();
-}
-
 afterAll(async () => {
-  cleanUpDb(db);
+  await connection.close();
 });
 
 describe('POST /tickets', () => {
