@@ -19,6 +19,11 @@ const options = {
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500,
+  bufferMaxEntries: 0,
+  connectTimeoutMS: 10000,
+  socketTimeoutMS: 45000,
 };
 
 const initDbConnection = async () => {
