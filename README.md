@@ -56,7 +56,7 @@ $ npm run dev
 
 ### Tests
 
-- `npm test` lunch jest to run unit-testing and integrating testing
+- `npm test` lunch jest to run unit-tests and integration test
 
 ```shell
 $ npm test
