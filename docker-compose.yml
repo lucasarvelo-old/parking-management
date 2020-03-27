@@ -1,4 +1,6 @@
 version: '2'
+volumes:
+  mongodata:
 services:
   app:
     container_name: parking-management
@@ -10,10 +12,13 @@ services:
       - '3000:3000'
     environment:
       - DEBUG=parking-management:*
-    links:
+      - DB_URL=mongodb://mongo
+    depends_on:
       - mongo
   mongo:
     container_name: mongo
     image: mongo
+    volumes:
+      - mongodata:/data/db
     ports:
       - '27017:27017'
