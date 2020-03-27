@@ -2,7 +2,11 @@
 
 ### API to manage access to a parking lot with a simple front-end
 
+### App deployed to Heroku with mLab Database - [https://parking-management-api.herokuapp.com/](https://parking-management-api.herokuapp.com/)
+
+[![Heroku App Status](http://heroku-shields.herokuapp.com/parking-management-api)](https://parking-management-api.herokuapp.com)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://travis-ci.com/lucasarvelo/parking-management.svg?branch=master)](https://travis-ci.com/lucasarvelo/parking-management)
 
 ## Table of Contents
 
@@ -66,6 +70,12 @@ $ npm test
 
 - Install Docker [Download Docker](https://www.docker.com/products/docker-desktop)
   <br>
+- [Clone](#clone) this repo to your local machine
+- Copy the content of .env.example into a new file .env
+
+```shell
+$ cp .env.example .env
+```
 
 - Build the Docker image
 
