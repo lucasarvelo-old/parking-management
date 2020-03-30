@@ -100,9 +100,9 @@ $ docker-compose up
 - Visit [http://localhost:3000/](http://localhost:3000/).
 - Generate a new ticket pressing the green button `Press for Ticket` on the New Ticket area.
 - Check how much a ticket own when filling up the ticket number and click on the button `Get Fee` on the Ticket Status area.
-- Pay for a ticket filling up the ticket number and a valid credit card number and click on the button `Pay`.
-- Every action gives you a feedback message in the bottom card area.
-- If the parking is full, you won't be able to get a new ticket until another ticket is pay.
+- To pay for a ticket, fill up the fields ticket number and credit card number and click on the button `Pay`.
+- Every action gives you a feedback message on the card at the bottom area.
+- If the parking is full, you won't be able to get a new ticket until another ticket is paid.
 
 ## Documentation
 
@@ -128,14 +128,15 @@ $ docker-compose up
 
 <br>
 
-| Endpoint                 | State                 | Message                    |
-| ------------------------ | --------------------- | -------------------------- |
-| /tickets                 | Parking Full          | Parking Full               |
-| /tickets/:ticket_number  | Ticket doesn't exist  | Ticket not found!          |
-| /tickets/:ticket_number  | Ticket is paid        | Ticket already paid!       |
-| /payments/:ticket_number | Invalid Credit Card # | Invalid Credit Card Number |
-| /payments/:ticket_number | Ticket doesn't exist  | Ticket not found!          |
-| /payments/:ticket_number | Ticket is paid        | Ticket already paid!       |
+| Endpoint                 | State                 | Message                                            |
+| ------------------------ | --------------------- | -------------------------------------------------- |
+| /tickets                 | Parking Full          | Parking Full                                       |
+| /tickets/:ticket_number  | Ticket doesn't exist  | Ticket not found!                                  |
+| /tickets/:ticket_number  | Ticket is paid        | Ticket already paid!                               |
+| /payments/:ticket_number | Invalid Credit Card # | Invalid Credit Card Number                         |
+| /payments/:ticket_number | Ticket doesn't exist  | Ticket not found!                                  |
+| /payments/:ticket_number | Ticket is paid        | Ticket already paid!                               |
+| /payments/:ticket_number | Payment successful    | Ticket has been paid. Thank you for your business! |
 
 ### Technologies and Dependencies Use
 
