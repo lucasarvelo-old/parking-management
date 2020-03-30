@@ -35,7 +35,9 @@ const payProcess = ({ Ticket, Parking, rates }) => async (req, res, next) => {
                 (error, parking) => {
                   if (error) return next(error);
 
-                  res.json('Ticket has been pay. Thank you for your business!');
+                  res.json(
+                    'Ticket has been paid. Thank you for your business!'
+                  );
                 }
               );
             });

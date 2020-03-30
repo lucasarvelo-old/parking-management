@@ -93,7 +93,7 @@ describe('POST /payments/:ticketNumber', () => {
       expect(res.statusCode).toBe(200);
     });
 
-    test('Should responds with Ticket has been pay. Thank you for your business!', async () => {
+    test('Should responds with Ticket has been paid. Thank you for your business!', async () => {
       const res = await request(app)
         .post('/payments/1')
         .send({
@@ -101,7 +101,7 @@ describe('POST /payments/:ticketNumber', () => {
         });
 
       expect(JSON.parse(res.text)).toBe(
-        'Ticket has been pay. Thank you for your business!'
+        'Ticket has been paid. Thank you for your business!'
       );
       expect(res.statusCode).toBe(200);
     });
@@ -119,7 +119,7 @@ describe('POST /payments/:ticketNumber', () => {
       expect(res.statusCode).toBe(200);
     });
 
-    test('Should responds with Ticket has been pay. Thank you for your business!', async () => {
+    test('Should responds with Ticket has been paid. Thank you for your business!', async () => {
       const res = await request(app)
         .post('/payments/2')
         .send({
@@ -127,7 +127,7 @@ describe('POST /payments/:ticketNumber', () => {
         });
 
       expect(JSON.parse(res.text)).toBe(
-        'Ticket has been pay. Thank you for your business!'
+        'Ticket has been paid. Thank you for your business!'
       );
       expect(res.statusCode).toBe(200);
     });
