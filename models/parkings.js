@@ -9,7 +9,7 @@ const schema = new Schema({
   },
   totalParkingSpots: {
     type: Number,
-    default: process.env.TOTAL_PARKING_SPOTS,
+    required: '{PATH} is required!',
   },
   parkingSpotsInUse: {
     type: Number,
@@ -17,7 +17,7 @@ const schema = new Schema({
   },
 });
 
-schema.virtual('parkingAvailable').get(function() {
+schema.virtual('parkingAvailable').get(function () {
   return this.totalParkingSpots - this.parkingSpotsInUse;
 });
 
