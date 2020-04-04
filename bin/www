@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-require('dotenv').config();
+require('dotenv-safe').config();
 const app = require('../app');
 const debug = require('debug')('parking-management:server');
 const http = require('http');
